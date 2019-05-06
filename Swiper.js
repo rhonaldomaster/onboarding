@@ -240,13 +240,15 @@ export default class OnboardingScreens extends Component {
         {lastScreen
           // Show this button on the last screen
           // TODO: Add a handler that would send a user to your app after onboarding is complete
-          ? <Button text="Start Now" onPress={() => console.log('Send me to the app')} />
+          ? <Button text="Start Now" onPress={() => this.start()} />
           // Or this one otherwise
-          : <Button text="Continue" onPress={() => this.swipe()} />
+          : <Button text="Skip" onPress={() => this.start()} />
         }
       </View>
     );
   }
+
+  start = () => {};
 
   /**
    * Render the component
@@ -294,7 +296,7 @@ const styles = StyleSheet.create({
   },
   // Pagination dot
   dot: {
-    backgroundColor: 'rgba(0,0,0,.25)',
+    backgroundColor: 'rgba(0,0,0,.50)',
     width: 8,
     height: 8,
     borderRadius: 4,
@@ -305,19 +307,19 @@ const styles = StyleSheet.create({
   },
   // Active dot
   activeDot: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#000000',
   },
   // Button wrapper
   buttonWrapper: {
     backgroundColor: 'transparent',
     flexDirection: 'column',
     position: 'absolute',
-    bottom: 0,
+    bottom: 57,
     left: 0,
     flex: 1,
     paddingHorizontal: 10,
     paddingVertical: 40,
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'flex-end'
   },
 });
