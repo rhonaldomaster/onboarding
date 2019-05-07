@@ -5,13 +5,12 @@ import {
   View,
   Image
 } from 'react-native';
-import Button from './Button';
 import Swiper from './Swiper';
 
 export default class Screens extends Component {
   render() {
     return (
-      <Swiper>
+      <Swiper navigation={this.props.navigation}>
         {/* First screen */}
         <View style={[styles.slide, { backgroundColor: '#FFFFFF' }]}>
           <Image source={require('./img/logo.png')} />

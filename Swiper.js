@@ -248,7 +248,9 @@ export default class OnboardingScreens extends Component {
     );
   }
 
-  start = () => {};
+  start = () => {
+    this.props.navigation.navigate('Welcome');
+  };
 
   /**
    * Render the component

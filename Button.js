@@ -16,7 +16,7 @@ export default class Button extends Component {
     return (
       <TouchableOpacity onPress={onPress} style={this.props.touchableStyle ? this.props.touchableStyle : {}}>
         <View style={this.props.buttonStyle ? this.props.buttonStyle : styles.button}>
-          <Text style={this.props.textStyle ? this.props.style : styles.text}>{this.props.text.toUpperCase()}</Text>
+          <Text style={this.props.textStyle ? this.props.textStyle : styles.text}>{this.props.text}</Text>
         </View>
       </TouchableOpacity>
     );

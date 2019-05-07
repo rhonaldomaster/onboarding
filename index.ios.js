@@ -3,7 +3,23 @@ import {
   AppRegistry,    // Registers the app
   StatusBar,      // Allows to hide the satatus bar
 } from 'react-native';
-import Screens from './Screens';
+import HomeScreen from './Screens';
+import SignInUPScreen from './SignInUP';
+import WelcomeScreen from './Welcome';
+import { createStackNavigator, createAppContainer } from "react-navigation";
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    SignInUP: SignInUPScreen,
+    Welcome: WelcomeScreen
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
+
+const AppContainer = createAppContainer(AppNavigator);
 
 export default class Onboarding extends Component {
   componentDidMount() {
@@ -12,7 +28,7 @@ export default class Onboarding extends Component {
   }
   render() {
     return (
-      <Screens />
+      <AppContainer />
     );
   }
 }
