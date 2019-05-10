@@ -3,9 +3,9 @@ import {
   AppRegistry,    // Registers the app
   StatusBar,      // Allows to hide the satatus bar
 } from 'react-native';
-import HomeScreen from './Screens';
-import SignInUPScreen from './SignInUP';
-import WelcomeScreen from './Welcome';
+import HomeScreen from './src/components/index/Screens';
+import SignInUPScreen from './src/components/signin/SignInUP';
+import WelcomeScreen from './src/components/home/Welcome';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 const AppNavigator = createStackNavigator(
@@ -15,7 +15,7 @@ const AppNavigator = createStackNavigator(
     Welcome: WelcomeScreen
   },
   {
-    initialRouteName: "SignInUP"
+    initialRouteName: "Home"
   }
 );
 

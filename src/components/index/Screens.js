@@ -5,7 +5,7 @@ import {
   View,
   Image
 } from 'react-native';
-import Swiper from './Swiper';
+import Swiper from '../../common/Swiper';
 
 export default class Screens extends Component {
   render() {
@@ -13,15 +13,15 @@ export default class Screens extends Component {
       <Swiper navigation={this.props.navigation}>
         {/* First screen */}
         <View style={[styles.slide, { backgroundColor: '#FFFFFF' }]}>
-          <Image source={require('./img/logo.png')} />
+          <Image source={require('../../assets/images/logo.png')} />
         </View>
         {/* Second screen */}
         <View style={[styles.slide, { backgroundColor: '#FFFFFF' }]}>
-          <Image source={require('./img/logo.png')} />
+          <Image source={require('../../assets/images/logo.png')} />
         </View>
         {/* Third screen */}
         <View style={[styles.slide, { backgroundColor: '#FFFFFF' }]}>
-          <Image source={require('./img/logo.png')} />
+          <Image source={require('../../assets/images/logo.png')} />
         </View>
       </Swiper>
     );

@@ -5,13 +5,13 @@ import {
   View,
   ImageBackground
 } from 'react-native';
-import Button from './Button';
+import Button from '../../common/Button';
 
 export default class Welcome extends Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }} navigation={this.props.navigation}>
-        <ImageBackground source={require('./img/background.png')} style={styles.layout}>
+        <ImageBackground source={require('../../assets/images/background.png')} style={styles.layout}>
           <Text style={styles.title}>Welcome to Latvia 100</Text>
           <Text style={styles.text}>In 2018 Latvia is celebrating the 100th aniversary and we selected the best things and places to visit!</Text>
           <Button text="Get started" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignIn()}/>

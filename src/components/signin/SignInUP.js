@@ -5,18 +5,18 @@ import {
   View,
   Image
 } from 'react-native';
-import Button from './Button';
+import Button from '../../common/Button';
 
 export default class SignInUP extends Component {
   render() {
     return (
       <View style={styles.layout} navigation={this.props.navigation}>
-        <Image source={require('./img/login-logo.png')} />
+        <Image source={require('../../assets/images/login-logo.png')} />
         <Text style={[styles.text, styles.preSocialNetworkText]}>Get started with</Text>
         <View style={styles.socialButtons}>
-          <Image source={require('./img/social-button-3.png')} />
-          <Image style={styles.socialButtonCenter} source={require('./img/social-button-2.png')} />
-          <Image source={require('./img/social-button-1.png')} />
+          <Image source={require('../../assets/images/social-button-3.png')} />
+          <Image style={styles.socialButtonCenter} source={require('../../assets/images/social-button-2.png')} />
+          <Image source={require('../../assets/images/social-button-1.png')} />
         </View>
         <Text style={styles.text}>Or sign up with</Text>
         <Button text="Email" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignIn()} />
