@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
   touchableStyle: {
     alignSelf: 'stretch',
     backgroundColor: '#202020',
+    borderRadius: 4,
     marginVertical: 20,
   },
   button: {
-    borderRadius: 4,
     borderWidth: 0,
     paddingHorizontal: 20,
     paddingVertical: 20,
