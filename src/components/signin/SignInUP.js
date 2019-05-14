@@ -26,6 +26,10 @@ export default class SignInUP extends Component {
       </View>
     );
   }
+
+  goToSignIn = () => {
+    this.props.navigation.navigate('SignIn');
+  }
 }
 
 const styles = StyleSheet.create({
