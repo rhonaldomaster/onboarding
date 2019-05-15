@@ -5,7 +5,7 @@ import {
   View,
   Image
 } from 'react-native';
-import Swiper from '../../common/Swiper';
+import Swiper from '../common/Swiper';
 
 export default class Screens extends Component {
   render() {

@@ -5,7 +5,7 @@ import {
   View,
   ImageBackground
 } from 'react-native';
-import Button from '../../common/Button';
+import Button from '../common/Button';
 
 export default class Welcome extends Component {
   render() {

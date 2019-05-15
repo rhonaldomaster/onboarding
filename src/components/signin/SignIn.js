@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View,
-  TextInput
+  View
 } from 'react-native';
-import Button from '../../common/Button';
+import Button from '../common/Button';
+import Input from '../common/Input';
 
 export default class SignIn extends Component {
   render() {
@@ -13,14 +13,10 @@ export default class SignIn extends Component {
       <View style={styles.layout} navigation={this.props.navigation}>
         <Text style={[styles.text, styles.title]}>Sveik! <Text style={styles.lightText}>Hello!</Text></Text>
         <View style={styles.socialButtons}>
-          <Text style={styles.label}>Name</Text>
-          <TextInput value="" style={styles.input}/>
-          <Text style={styles.label}>Email</Text>
-          <TextInput value="" style={styles.input} keyboardType="email-address"/>
-          <Text style={styles.label}>Password</Text>
-          <TextInput value="" style={styles.input} secureTextEntry={true}/>
-          <Text style={styles.label}>Confirm password</Text>
-          <TextInput value="" style={styles.input} secureTextEntry={true}/>
+          <Input label={'Name'} autoCorrect={true} />
+          <Input label={'Email'} keyboardType={'email-address'} />
+          <Input label={'Password'} secureTextEntry={true} />
+          <Input label={'Confirm password'} secureTextEntry={true} />
         </View>
         <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignIn()} />
         <View style={styles.alreadyOnboard}>
@@ -97,6 +93,7 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderRightWidth: 0,
     borderTopWidth: 0,
+    height: 20,
     marginBottom: 40,
   }
 });

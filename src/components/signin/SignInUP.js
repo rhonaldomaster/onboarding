@@ -5,7 +5,7 @@ import {
   View,
   Image
 } from 'react-native';
-import Button from '../../common/Button';
+import Button from '../common/Button';
 
 export default class SignInUP extends Component {
   render() {
