@@ -8,22 +8,46 @@ import Button from '../common/Button';
 import Input from '../common/Input';
 
 export default class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: '',
+      password: ''
+    };
+    this.updateData = this.updateData.bind(this);
+  }
+
   render() {
     return(
       <View style={styles.layout} navigation={this.props.navigation}>
-        <Text style={[styles.text, styles.title]}>Sveik! <Text style={styles.lightText}>Hello!</Text></Text>
+        <Text style={[styles.text, styles.title]}>Welcome Back!</Text>
+        <Text style={styles.text}>Log in with</Text>
         <View style={styles.socialButtons}>
-          <Input label={'Name'} autoCorrect={true} />
-          <Input label={'Email'} keyboardType={'email-address'} />
-          <Input label={'Password'} secureTextEntry={true} />
-          <Input label={'Confirm password'} secureTextEntry={true} />
+          <Image source={require('../../assets/images/social-button-3.png')} />
+          <Image style={styles.socialButtonCenter} source={require('../../assets/images/social-button-2.png')} />
+          <Image source={require('../../assets/images/social-button-1.png')} />
         </View>
-        <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignIn()} />
+        <Text style={styles.text}>or</Text>
+        <View style={styles.socialButtons}>
+          <Input label={'Email'} keyboardType={'email-address'} name={'email'} handleChangeText={this.updateData} autoCapitalize={'none'} />
+          <Input label={'Password'} secureTextEntry={true} name={'password'} handleChangeText={this.updateData} autoCapitalize={'none'} />
+        </View>
+        <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signIn()} />
         <View style={styles.alreadyOnboard}>
           <Text style={styles.text}>Already onboard? <Text style={styles.loginText}>Login</Text></Text>
         </View>
       </View>
     );
+  }
+
+  updateData(text, name) {
+    var newState = Object.assign({}, this.state);
+    newState[name] = text;
+    this.setState(newState);
+  }
+
+  signIn() {
+    console.log(this.state);
   }
 }
 

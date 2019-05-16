@@ -19,7 +19,7 @@ export default class SignInUP extends Component {
           <Image source={require('../../assets/images/social-button-1.png')} />
         </View>
         <Text style={styles.text}>Or sign up with</Text>
-        <Button text="Email" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignIn()} />
+        <Button text="Email" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignUp()} />
         <View style={styles.alreadyOnboard}>
           <Text style={styles.text}>Already onboard? <Text style={styles.loginText}>Login</Text></Text>
         </View>
@@ -27,8 +27,8 @@ export default class SignInUP extends Component {
     );
   }
 
-  goToSignIn = () => {
-    this.props.navigation.navigate('SignIn');
+  goToSignUp = () => {
+    this.props.navigation.navigate('SignUp');
   }
 }
 

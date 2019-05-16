@@ -6,6 +6,7 @@ export default class Input extends Component {
     super(props);
     this.state = {
       text: '',
+      name: ''
     };
     this.handleChangeText = this.handleChangeText.bind(this);
   }
@@ -18,6 +19,7 @@ export default class Input extends Component {
           autoCorrect={this.props.autoCorrect}
           value={this.props.text}
           onChangeText={this.handleChangeText}
+          name={this.props.name}
           style={styles.input}
           autoCapitalize={this.props.autoCapitalize}
           keyboardType={this.props.keyboardType} />
@@ -29,6 +31,9 @@ export default class Input extends Component {
     this.setState({
       text: text.toString(),
     });
+    if (this.props.handleChangeText) {
+      this.props.handleChangeText(text, this.props.name);
+    }
   }
 }
 
