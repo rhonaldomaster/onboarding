@@ -1,8 +1,10 @@
+import { SIGNIN_URL } from '../../constants';
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Image
 } from 'react-native';
 import Button from '../common/Button';
 import Input from '../common/Input';
@@ -28,16 +30,20 @@ export default class SignIn extends Component {
           <Image source={require('../../assets/images/social-button-1.png')} />
         </View>
         <Text style={styles.text}>or</Text>
-        <View style={styles.socialButtons}>
+        <View style={styles.inputForm}>
           <Input label={'Email'} keyboardType={'email-address'} name={'email'} handleChangeText={this.updateData} autoCapitalize={'none'} />
           <Input label={'Password'} secureTextEntry={true} name={'password'} handleChangeText={this.updateData} autoCapitalize={'none'} />
         </View>
-        <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signIn()} />
+        <Button text="Sign in" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signIn()} />
         <View style={styles.alreadyOnboard}>
-          <Text style={styles.text}>Already onboard? <Text style={styles.loginText}>Login</Text></Text>
+          <Text style={styles.text}>Need an account? <Text style={styles.loginText} onPress={() => this.goToSignUp()}>Sign up</Text></Text>
         </View>
       </View>
     );
+  }
+
+  goToSignUp = () => {
+    this.props.navigation.navigate('SignUp');
   }
 
   updateData(text, name) {
@@ -47,7 +53,25 @@ export default class SignIn extends Component {
   }
 
   signIn() {
-    console.log(this.state);
+    let data = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    };
+    console.log(data);
+    fetch(SIGNIN_URL, data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 
@@ -97,8 +121,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   socialButtons: {
+    alignItems: 'center',
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 40,
+    marginTop: 40,
+    maxHeight: 60,
+    maxWidth: '100%',
+  },
+  inputForm: {
     marginBottom: 20,
-    marginTop: 60,
+    marginTop: 20,
     width: '100%',
   },
   title: {

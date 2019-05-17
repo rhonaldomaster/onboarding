@@ -21,7 +21,7 @@ export default class SignInUP extends Component {
         <Text style={styles.text}>Or sign up with</Text>
         <Button text="Email" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.goToSignUp()} />
         <View style={styles.alreadyOnboard}>
-          <Text style={styles.text}>Already onboard? <Text style={styles.loginText}>Login</Text></Text>
+          <Text style={styles.text}>Already onboard? <Text style={styles.loginText} onPress={() => this.goToSignIn()}>Login</Text></Text>
         </View>
       </View>
     );
@@ -29,6 +29,10 @@ export default class SignInUP extends Component {
 
   goToSignUp = () => {
     this.props.navigation.navigate('SignUp');
+  }
+
+  goToSignIn = () => {
+    this.props.navigation.navigate('SignIn');
   }
 }
 

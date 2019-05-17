@@ -1,3 +1,4 @@
+import { SIGNUP_URL } from '../../constants';
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -31,10 +32,14 @@ export default class SignUp extends Component {
         </View>
         <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signUp()} />
         <View style={styles.alreadyOnboard}>
-          <Text style={styles.text}>Already onboard? <Text style={styles.loginText}>Login</Text></Text>
+          <Text style={styles.text}>Already onboard? <Text style={styles.loginText} onPress={() => this.goToSignIn()}>Login</Text></Text>
         </View>
       </View>
     );
+  }
+
+  goToSignIn = () => {
+    this.props.navigation.navigate('SignIn');
   }
 
   updateData(text, name) {
@@ -44,7 +49,27 @@ export default class SignUp extends Component {
   }
 
   signUp() {
-    console.log(this.state);
+    let data = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password,
+        password_confirmation: this.state.passwordConfirm
+      })
+    };
+    console.log(data);
+    fetch(SIGNUP_URL, data)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 }
 
