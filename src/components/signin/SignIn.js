@@ -69,7 +69,9 @@ export default class SignIn extends Component {
     console.log(data);
     fetch(SIGNIN_URL, data)
       .then((response) => {
-        console.log(response);
+        if (response.status == 200) {
+          this.props.navigation.navigate('ImagesList');
+        }
       })
       .catch((error) => {
         console.error(error);
