@@ -60,8 +60,10 @@ export default class SignIn extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+        session: {
+          email: this.state.email,
+          password: this.state.password
+        }
       })
     };
     console.log(data);

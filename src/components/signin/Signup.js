@@ -56,10 +56,12 @@ export default class SignUp extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password,
-        password_confirmation: this.state.passwordConfirm
+        member: {
+          name: this.state.name,
+          email: this.state.email,
+          password: this.state.password,
+          password_confirmation: this.state.passwordConfirm
+        }
       })
     };
     console.log(data);
