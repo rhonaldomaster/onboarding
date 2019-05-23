@@ -4,7 +4,8 @@ import {
   FlatList,
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 export default class ImagesList extends Component {
@@ -13,7 +14,6 @@ export default class ImagesList extends Component {
     this.state = {
       items: []
     };
-    this.generateFromResponse = this.generateFromResponse.bind(this);
   }
 
   componentDidMount() {
@@ -35,6 +35,27 @@ export default class ImagesList extends Component {
         console.error(error);
       });
   }
+  keyExtractor(item, id) {
+    return item.id;
+  }
+
+  generateFromResponse = (data) => {
+    this.setState({
+      items: data
+    });
+  }
+
+  renderItem = ({ item }) => {
+    return (
+      <TouchableOpacity onPress={() => this.viewDetails(item)}>
+        <Image id={item.id} source={{ uri: item.download_url }} style={styles.imageStyle} />
+      </TouchableOpacity>
+    );
+  }
+
+  viewDetails = (item) => {
+    this.props.navigation.navigate('ImageDetail', { data: item });
+  }
 
   render() {
     return (
@@ -49,22 +70,6 @@ export default class ImagesList extends Component {
           numColumns={3}
         />
       </View>
-    );
-  }
-
-  keyExtractor(item, id) {
-    return item.id;
-  }
-
-  generateFromResponse(data) {
-    this.setState({
-      items: data
-    });
-  }
-
-  renderItem({item}) {
-    return (
-      <Image id={item.id} source={{ uri: item.download_url }} style={styles.imageStyle} />
     );
   }
 }
