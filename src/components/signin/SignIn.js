@@ -8,13 +8,16 @@ import {
 } from 'react-native';
 import Button from '../common/Button';
 import Input from '../common/Input';
+import Spinner from '../common/Spinner';
 
 export default class SignIn extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      loading: false,
+      password: '',
+      showError: false
     };
     this.updateData = this.updateData.bind(this);
   }
@@ -22,6 +25,7 @@ export default class SignIn extends Component {
   render() {
     return(
       <View style={styles.layout} navigation={this.props.navigation}>
+        <Spinner visible={this.state.loading}/>
         <Text style={[styles.text, styles.title]}>Welcome Back!</Text>
         <Text style={styles.text}>Log in with</Text>
         <View style={styles.socialButtons}>
@@ -35,6 +39,10 @@ export default class SignIn extends Component {
           <Input label={'Password'} secureTextEntry={true} name={'password'} handleChangeText={this.updateData} autoCapitalize={'none'} />
         </View>
         <Button text="Sign in" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signIn()} />
+        {
+          this.state.showError &&
+          <Text style={styles.loginText}>Invalid email or password</Text>
+        }
         <View style={styles.alreadyOnboard}>
           <Text style={styles.text}>Need an account? <Text style={styles.loginText} onPress={() => this.goToSignUp()}>Sign up</Text></Text>
         </View>
@@ -53,6 +61,8 @@ export default class SignIn extends Component {
   }
 
   signIn() {
+    let newState = Object.assign({}, this.state, { loading: true, showError: false });
+    this.setState(newState);
     let data = {
       method: 'POST',
       headers: {
@@ -66,14 +76,18 @@ export default class SignIn extends Component {
         }
       })
     };
-    console.log(data);
     fetch(SIGNIN_URL, data)
       .then((response) => {
         if (response.status == 200) {
           this.props.navigation.navigate('ImagesList');
+          return;
         }
+        let newState = Object.assign({}, this.state, { loading: false, showError: true });
+        this.setState(newState);
       })
       .catch((error) => {
+        let newState = Object.assign({}, this.state, { loading: false, showError: true });
+        this.setState(newState);
         console.error(error);
       });
   }

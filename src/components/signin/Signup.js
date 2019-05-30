@@ -7,15 +7,18 @@ import {
 } from 'react-native';
 import Button from '../common/Button';
 import Input from '../common/Input';
+import Spinner from '../common/Spinner';
 
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
+      loading: false,
       name: '',
       password: '',
-      passwordConfirm: ''
+      passwordConfirm: '',
+      showError: false
     };
     this.updateData = this.updateData.bind(this);
   }
@@ -23,6 +26,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <View style={styles.layout} navigation={this.props.navigation}>
+        <Spinner visible={this.state.loading} />
         <Text style={[styles.text, styles.title]}>Sveik! <Text style={styles.lightText}>Hello!</Text></Text>
         <View style={styles.socialButtons}>
           <Input label={'Name'} autoCorrect={true} name={'name'} handleChangeText={this.updateData} />
@@ -31,6 +35,10 @@ export default class SignUp extends Component {
           <Input label={'Confirm password'} secureTextEntry={true} name={'passwordConfirm'} handleChangeText={this.updateData} autoCapitalize={'none'} />
         </View>
         <Button text="Sign up" touchableStyle={styles.touchableStyle} buttonStyle={styles.button} textStyle={styles.buttonText} onPress={() => this.signUp()} />
+        {
+          this.state.showError &&
+          <Text style={styles.loginText}>Invalid data, please check your data</Text>
+        }
         <View style={styles.alreadyOnboard}>
           <Text style={styles.text}>Already onboard? <Text style={styles.loginText} onPress={() => this.goToSignIn()}>Login</Text></Text>
         </View>
@@ -49,6 +57,8 @@ export default class SignUp extends Component {
   }
 
   signUp() {
+    let newState = Object.assign({}, this.state, { loading: true, showError: false });
+    this.setState(newState);
     let data = {
       method: 'POST',
       headers: {
@@ -64,12 +74,18 @@ export default class SignUp extends Component {
         }
       })
     };
-    console.log(data);
     fetch(SIGNUP_URL, data)
       .then((response) => {
-        console.log(response);
+        if (response.status == 200) {
+          this.props.navigation.navigate('ImagesList');
+          return;
+        }
+        let newState = Object.assign({}, this.state, { loading: false, showError: true });
+        this.setState(newState);
       })
       .catch((error) => {
+        let newState = Object.assign({}, this.state, { loading: false, showError: true });
+        this.setState(newState);
         console.error(error);
       });
   }
