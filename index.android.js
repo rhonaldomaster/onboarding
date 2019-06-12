@@ -10,6 +10,8 @@ import SignUpScreen from './src/components/signin/Signup';
 import WelcomeScreen from './src/components/home/Welcome';
 import ImagesListScreen from './src/components/views/ImagesList';
 import ImageDetailScreen from './src/components/views/ImageDetail';
+import AssistantListScreen from './src/components/views/AssistantList';
+import AssistantDetailScreen from './src/components/views/AssistantDetail';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 const AppNavigator = createStackNavigator(
@@ -20,10 +22,12 @@ const AppNavigator = createStackNavigator(
     SignUp: SignUpScreen,
     Welcome: WelcomeScreen,
     ImagesList: ImagesListScreen,
-    ImageDetail: ImageDetailScreen
+    ImageDetail: ImageDetailScreen,
+    AssistantList: AssistantListScreen,
+    AssistantDetail: AssistantDetailScreen
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "AssistantList",
     defaultNavigationOptions: {
       header: null
     }

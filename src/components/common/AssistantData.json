@@ -1,0 +1,152 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Cristiano Ronaldo",
+      "avatar": "https://cdn6.aptoide.com/imgs/1/b/e/1be0b37a79cbf8a6aafd4ac9777d546b_icon.png",
+      "availability": [
+        {
+          "id": 1,
+          "day": "Monday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 2,
+          "day": "Tuesday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 3,
+          "day": "Monday",
+          "time": "9:00 am"
+        },
+        {
+          "id": 5,
+          "day": "Monday",
+          "time": "10:00 am"
+        },
+        {
+          "id": 6,
+          "day": "Monday",
+          "time": "11:00 am"
+        },
+        {
+          "id": 7,
+          "day": "Monday",
+          "time": "1:00 pm"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fullName": "Michael Jordan",
+      "avatar": "https://cdn.iconscout.com/icon/free/png-256/air-jordan-555582.png",
+      "availability": [
+        {
+          "id": 1,
+          "day": "Monday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 2,
+          "day": "Tuesday",
+          "time": "4:00 pm"
+        },
+        {
+          "id": 3,
+          "day": "Monday",
+          "time": "9:00 am"
+        },
+        {
+          "id": 5,
+          "day": "Friday",
+          "time": "10:00 am"
+        },
+        {
+          "id": 6,
+          "day": "Friday",
+          "time": "11:00 am"
+        },
+        {
+          "id": 7,
+          "day": "Monday",
+          "time": "1:00 pm"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "fullName": "Facebook executive",
+      "avatar": "https://cdn.icon-icons.com/icons2/31/PNG/256/social_facebook_fb_2763.png",
+      "availability": [
+        {
+          "id": 1,
+          "day": "Monday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 2,
+          "day": "Tuesday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 3,
+          "day": "Saturday",
+          "time": "9:00 am"
+        },
+        {
+          "id": 5,
+          "day": "Saturday",
+          "time": "10:00 am"
+        },
+        {
+          "id": 6,
+          "day": "Monday",
+          "time": "11:00 am"
+        },
+        {
+          "id": 7,
+          "day": "Friday",
+          "time": "1:00 pm"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "fullName": "Jane Doe",
+      "avatar": "https://randomuser.me/api/portraits/women/58.jpg",
+      "availability": [
+        {
+          "id": 1,
+          "day": "Monday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 2,
+          "day": "Saturday",
+          "time": "8:00 am"
+        },
+        {
+          "id": 3,
+          "day": "Friday",
+          "time": "9:00 am"
+        },
+        {
+          "id": 5,
+          "day": "Saturday",
+          "time": "10:00 am"
+        },
+        {
+          "id": 6,
+          "day": "Monday",
+          "time": "11:00 am"
+        },
+        {
+          "id": 7,
+          "day": "Friday",
+          "time": "1:00 pm"
+        }
+      ]
+    }
+  ]
+}
